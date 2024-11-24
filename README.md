@@ -1,4 +1,4 @@
-ERROS IDENTIFICADOS NO *CÓDIGO
+ERROS IDENTIFICADOS NO CÓDIGO
 
 1. Driver JDBC Obsoleto
 Descrição do Problema: O código utiliza Class.forName("com.mysql.Driver.Manager").newInstance();, que está desatualizado e não compatível com versões recentes do MySQL Connector/J.
