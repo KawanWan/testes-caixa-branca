@@ -1,3 +1,90 @@
+# Gerenciador de Usuários com Conexão ao Banco de Dados
+
+Este repositório contém um projeto em Java que implementa uma classe para gerenciar conexões com um banco de dados MySQL e realizar a verificação de credenciais de usuário. O projeto é ideal para quem está aprendendo a trabalhar com Java e banco de dados ou busca uma base para construir aplicações relacionadas à autenticação.
+
+## Funcionalidades
+
+- **Conexão ao Banco de Dados:**
+  - Estabelece conexão com um banco de dados MySQL usando o driver JDBC.
+- **Verificação de Usuário:**
+  - Permite verificar se um login e senha correspondem a um usuário registrado no banco de dados.
+- **Armazenamento de Resultados:**
+  - Salva o nome do usuário encontrado e o status da verificação.
+
+## Estrutura do Código
+
+A principal classe do projeto é `User`. Ela possui:
+
+### Atributos
+- `nome` - Armazena o nome do usuário encontrado no banco de dados.
+- `result` - Indica se o usuário foi encontrado (`true`) ou não (`false`).
+
+### Métodos
+
+#### **`conectarBD()`**
+Estabelece uma conexão com o banco de dados MySQL.
+- **Retorno:** Objeto `Connection` representando a conexão.
+
+#### **`verificarUsuario(String login, String senha)`**
+Verifica se um usuário existe no banco de dados com base no login e senha fornecidos.
+- **Parâmetros:**
+  - `login`: Login do usuário.
+  - `senha`: Senha do usuário.
+- **Retorno:** `true` se o usuário for encontrado, `false` caso contrário.
+
+## Pré-requisitos
+
+- **Java JDK:** Versão 8 ou superior.
+- **MySQL:** Banco de dados configurado com uma tabela chamada `usuarios` contendo as colunas `nome`, `login` e `senha`.
+- **Driver JDBC:** Certifique-se de ter o driver MySQL JDBC disponível no classpath do projeto.
+
+## Configuração do Banco de Dados
+
+Exemplo de criação de tabela no MySQL:
+```sql
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  login VARCHAR(50) NOT NULL,
+  senha VARCHAR(50) NOT NULL
+);
+
+INSERT INTO usuarios (nome, login, senha) VALUES
+('João Silva', 'joao', '12345'),
+('Maria Oliveira', 'maria', 'senha123');
+```
+
+## Configuração do Projeto
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   ```
+2. Adicione o driver MySQL JDBC ao projeto.
+3. Configure a URL de conexão no método `conectarBD()` com as credenciais do seu banco de dados.
+
+## Execução
+
+1. Compile o projeto:
+   ```bash
+   javac -cp .;mysql-connector-java-x.x.x.jar User.java
+   ```
+2. Execute o programa:
+   ```bash
+   java -cp .;mysql-connector-java-x.x.x.jar User
+   ```
+
+## Melhorias Futuras
+
+- Adicionar suporte para criptografia de senhas.
+- Utilizar Prepared Statements para evitar injeção de SQL.
+- Implementar testes unitários.
+
+## Licença
+
+Este projeto é de uso livre para fins educacionais e está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+
 ERROS IDENTIFICADOS NO CÓDIGO
 
 1. Driver JDBC Obsoleto
